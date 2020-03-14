@@ -4,7 +4,7 @@
     <c:param name="content">
         <c:if test="${flush != null}">
             <div id="flush_success">
-                <c:out value="{flush}"></c:out>
+                <c:out value="${flush}"></c:out>
             </div>
         </c:if>
         <h2>タスク一覧</h2>
@@ -19,8 +19,8 @@
             </c:forEach>
         </ul>
         <div id="pagination">
-            （全 ${task_count} 件）<br />
-            <c:forEach var="i" begin="1" end="${((task_count - 1) / 15) + 1}" step="1">
+            （全 ${tasklist_count} 件）<br />
+            <c:forEach var="i" begin="1" end="${((tasklist_count - 1) / 15) + 1}" step="1">
                 <c:choose>
                     <c:when test="${i == page}">
                         <c:out value="${i}" />&nbsp;

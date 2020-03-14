@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<c:import url="../layout/app/jsp">
+<c:import url="../layout/app.jsp">
     <c:param name="content">
         <c:choose>
-            <c:when test="${message != null}">
+            <c:when test="${task != null}">
                 <h2>id : ${task.id}のメッセージ詳細ページ</h2>
                 <table>
                     <tbody>
