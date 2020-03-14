@@ -40,20 +40,20 @@ public class IndexServlet extends HttpServlet {
 	        page = Integer.parseInt(request.getParameter("page"));
 	    } catch(NumberFormatException e) {}
 	    
-	    List<Task> tasklist = em.createNamedQuery("getAllTasklist", Task.class)
+	    List<Task> tasks = em.createNamedQuery("getAllTasks", Task.class)
 	                             .setFirstResult(15 * (page - 1))
 	                             .setMaxResults(15)
 	                             .getResultList();
 
-	    response.getWriter().append(Integer.valueOf(tasklist.size()).toString());
+	    response.getWriter().append(Integer.valueOf(tasks.size()).toString());
 
-	    long tasklist_count = (long)em.createNamedQuery("getTasklistCount", Long.class)
+	    long tasks_count = (long)em.createNamedQuery("getTasksCount", Long.class)
 	                                      .getSingleResult();
 	    
 	    em.close();
 	    
-	    request.setAttribute("tasklist", tasklist);
-	    request.setAttribute("tasklist_count", tasklist_count);
+	    request.setAttribute("tasks", tasks);
+	    request.setAttribute("tasks_count", tasks_count);
 	    request.setAttribute("page", page);
 	    
 	    if(request.getSession().getAttribute("flush") != null) {
